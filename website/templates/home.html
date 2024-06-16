@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #004080;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #003366;
+            padding: 1em;
+        }
+        nav a {
+            color: white;
+            margin: 0 1em;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            background-image: url('https://via.placeholder.com/1500x500');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 3em 1em;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            padding: 2em 1em;
+            background-color: #f4f4f4;
+        }
+        .service {
+            background: white;
+            padding: 1em;
+            margin: 1em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .service img {
+            max-width: 100px;
+        }
+        .service h2 {
+            font-size: 1.5em;
+        }
+        footer {
+            background-color: #002244;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>BankName</h1>
+</header>
+
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+    <a href="#">Login</a>
+</nav>
+
+<div class="hero">
+    <h1>Welcome to BankName</h1>
+    <p>Your trusted partner in financial growth</p>
+</div>
+
+<div class="services">
+    <div class="service">
+        <img src="https://via.placeholder.com/100" alt="Service 1">
+        <h2>Personal Banking</h2>
+        <p>Manage your personal accounts, loans, and savings with ease.</p>
+    </div>
+    <div class="service">
+        <img src="https://via.placeholder.com/100" alt="Service 2">
+        <h2>Business Banking</h2>
+        <p>Solutions tailored for businesses of all sizes to grow and succeed.</p>
+    </div>
+    <div class="service">
+        <img src="https://via.placeholder.com/100" alt="Service 3">
+        <h2>Online Banking</h2>
+        <p>Access your accounts anytime, anywhere with our online services.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 BankName. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
+<h1 allign="center">Feedback</h1>
+<ul class="list-group list-group-flush" id="notes">
+    {% for note in user.notes %}
+    <li class="list-group-item">
+      {{ note.data }}
+      <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+  <form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+    <br />
+    <div align="center">
+      <button type="submit" onClick="alert("Thank you for your Feedback")" class="btn btn-primary">
+        Add Note</button>
+  </div>
+</form>
+{% endblock %}
